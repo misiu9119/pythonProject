@@ -145,3 +145,64 @@ Válasz: a
 
 """
 
+class Utanfuto(ABC):
+    def __init__(self, tipus, ar, teherbiras):
+        self.tipus = tipus
+        self.ar = ar
+        self.teherbiras = teherbiras
+
+    @abstractmethod
+    def info(self):
+        pass
+
+class FekezettUtanfuto(Utanfuto):
+    def info(self):
+        return f"Fekezett Utánfutó: {self.tipus}, Ár: {self.ar}, Teherbírás: {self.teherbiras}"
+
+class PonyvasUtanfuto(Utanfuto):
+    def info(self):
+        return f"Fekezett Utánfutó: self. {self.tipus}, Ár: {self.ar}, Teherbírás: {self.teherbiras}"
+
+
+class Kolcsonzo:
+    def __init__(self, nev):
+        self.nev = nev
+        self.utanfutok = []
+
+    def utanfuto_hozzaad(self, utanfuto):
+        self.utanfutok.append(utanfuto)
+
+    def info (self):
+        for utanfuto in self.utanfutok:
+            print(utanfuto.info)
+
+
+class Kolcsonzes:
+    def __init__(self):
+        self.kolcsonzesek = []
+
+    def ujKolcsonzes (self, kolcsonzo, utanfuto, datum):
+
+        if dateime.sprtime(datum, "%Y-%m-%d" ) >= datetime.now():
+            self.kolcsonzesek.append((kolcsonzo, utanfuto, datum))
+            print(f"Kölcsönzés rögzítve: {kolcsonzo.nev}, {utanfuto.tipus}, {datum}")
+        else:
+            print("Érvénytelen dátum!")
+
+def kolcsonzes_lemondas(self, kolcsonzo, utanfuto, datum):
+    # Ellenőrizzük, hogy létezik-e a foglalás és a dátum jövőbeni-e
+    letezo_kolcsonzes = (kolcsonzo, utanfuto, datum) in self.kolcsonzesek
+    jovo_dátum = datetime.strptime(datum, "%Y-%m-%d") >= datetime.now()
+    if letezo_kolcsonzes and jovo_dátum:
+        self.kolcsonzesek.remove((kolcsonzo, utanfuto, datum))
+        print("Kölcsönzés lemondva.")
+    else:
+        print("Érvénytelen lemondás.")
+
+def kolcsonzesek_listazasa(self):
+    print("Jelenlegi kölcsönzések:")
+    for kolcsonzes in self.kolcsonzesek:
+        print(f"{kolcsonzes[0].nev}, {kolcsonzes[1].tipus}, {kolcsonzes[2]}")
+
+
+
