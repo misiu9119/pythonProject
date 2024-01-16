@@ -237,7 +237,7 @@ kolcsonzo.utanfuto_hozzaad(fekezett)
 kolcsonzo.utanfuto_hozzaad(ponyvas)
 
 kolcsonzes = Kolcsonzes()
-kolcsonzes.uj_kolcsonzes(kolcsonzo, fekezett, "2024-03-10")
+kolcsonzes.uj_kolcsonzes(kolcsonzo, fekezett, "2024-03-10"
 kolcsonzes.uj_kolcsonzes(kolcsonzo, ponyvas, "2024-04-15")
 
 
