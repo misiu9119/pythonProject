@@ -144,6 +144,8 @@ d) Nincs különbség, mindkettő ugyanazt a célt szolgálja
 Válasz: a
 
 """
+from abc import ABC, abstractmethod
+from datetime import datetime
 
 class Utanfuto(ABC):
     def __init__(self, tipus, ar, teherbiras):
@@ -189,7 +191,7 @@ class Kolcsonzes:
         else:
             print("Érvénytelen dátum!")
 
-def kolcsonzes_lemondas(self, kolcsonzo, utanfuto, datum):
+    def kolcsonzes_lemondas(self, kolcsonzo, utanfuto, datum):
     # Ellenőrizzük, hogy létezik-e a foglalás és a dátum jövőbeni-e
     letezo_kolcsonzes = (kolcsonzo, utanfuto, datum) in self.kolcsonzesek
     jovo_dátum = datetime.strptime(datum, "%Y-%m-%d") >= datetime.now()
@@ -199,10 +201,43 @@ def kolcsonzes_lemondas(self, kolcsonzo, utanfuto, datum):
     else:
         print("Érvénytelen lemondás.")
 
-def kolcsonzesek_listazasa(self):
+    def kolcsonzesek_listazasa(self):
     print("Jelenlegi kölcsönzések:")
     for kolcsonzes in self.kolcsonzesek:
         print(f"{kolcsonzes[0].nev}, {kolcsonzes[1].tipus}, {kolcsonzes[2]}")
 
+
+
+    def felhasznaloi_interfesz():
+while True:
+print("\nUtánfutó Kölcsönző Rendszer")
+print("1. Új kölcsönzés")
+print("2. Kölcsönzés lemondása")
+print("3. Kölcsönzések listázása")
+print("4. Kilépés")
+valasztas = input("Válassz egy opciót: ")
+if valasztas == "1":
+    kolcsonzes.uj_kolcsonzes(kolcsonzo, fekezett, input("Add meg a dátumot (YYYY-MM-DD): "))
+elif valasztas == "2":
+    kolcsonzes.kolcsonzes_lemondas(kolcsonzo, fekezett, input("Add meg a lemondani kívánt dátumot(YYYY - MM - DD): "))
+    elif valasztas == "3":
+    kolcsonzes.kolcsonzesek_listazasa()
+    elif valasztas == "4":
+    print("Kilépés a programból.")
+    break
+    else:
+    print("Érvénytelen opció!")
+
+
+kolcsonzo = Kolcsonzo("Példa Kölcsönző")
+fekezett = FekezettUtanfuto("Nagy teher", 10000, 2000)
+ponyvas = PonyvasUtanfuto("Hosszú", 8000, 1500)
+
+kolcsonzo.utanfuto_hozzaad(fekezett)
+kolcsonzo.utanfuto_hozzaad(ponyvas)
+
+kolcsonzes = Kolcsonzes()
+kolcsonzes.uj_kolcsonzes(kolcsonzo, fekezett, "2024-03-10")
+kolcsonzes.uj_kolcsonzes(kolcsonzo, ponyvas, "2024-04-15")
 
 
